@@ -3,3 +3,8 @@ build/
 .project
 _config.yml
 .idea/
+.gradle
+matrix.iml
+matrix.ipr
+matrix.iws
+out/

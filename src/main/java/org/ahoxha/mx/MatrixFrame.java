@@ -28,7 +28,7 @@ public class MatrixFrame extends JFrame implements ActionListener {
 			+ "of multiplications. To find out which way we must arrange (parenthesize) \n"
 			+ "matrices to have minimum number of multiplications, in the text field \n"
 			+ "we type the array of dimensions of matrices, in our case the array is: \n"
-			+ "10,3,5,6 or 10-3-5-6 and press the “Calculate” button.";
+			+ "10,3,5,6 or 10-3-5-6 and press the 'Calculate' button.";
 	private JLabel copyRight = new JLabel("Author: Armend Hoxha. Created on: 15.1.2006.");
 
 	private JButton helpBtn = new JButton("Help");

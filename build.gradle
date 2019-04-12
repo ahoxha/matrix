@@ -1,0 +1,39 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'idea'
+    id 'eclipse'
+}
+
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+wrapper {
+    gradleVersion = '5.3.1'
+}
+
+dependencies {
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.4.2")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.4.2")
+}
+
+test {
+    useJUnitPlatform()
+
+    testLogging {
+        exceptionFormat = 'full'
+        events "failed"
+        afterSuite { desc, result ->
+            if (!desc.parent) {
+                println "\ntotal: ${result.testCount} | passed: ${result.successfulTestCount} | failed: ${result.failedTestCount} | skipped: ${result.skippedTestCount}\n"
+            }
+        }
+    }
+}
+
+// Define the main class for the application
+mainClassName = 'org.ahoxha.mx.MatrixFrame'
