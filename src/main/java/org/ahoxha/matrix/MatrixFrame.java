@@ -1,14 +1,11 @@
-package org.ahoxha.mx;
+package org.ahoxha.matrix;
 
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
 public class MatrixFrame extends JFrame implements ActionListener {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
 	private JTextField matrixArray = new JTextField("", 25);
 	private JButton calcBtn = new JButton("Calculate");
 	private MatrixView mv = new MatrixView();
@@ -69,6 +66,7 @@ public class MatrixFrame extends JFrame implements ActionListener {
 
 	}
 
+	@Override
 	public void actionPerformed(ActionEvent evt) {
 		if (evt.getSource().equals(helpBtn)) {
 			Object[] ob = { "OK" };
@@ -111,10 +109,5 @@ public class MatrixFrame extends JFrame implements ActionListener {
 
 			}
 		}
-	}
-
-	public static void main(String[] args) {
-		System.out.print("Starting Matrix Chain Order ...");
-		new MatrixFrame();
 	}
 }

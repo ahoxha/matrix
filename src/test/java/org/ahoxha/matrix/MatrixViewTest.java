@@ -1,4 +1,4 @@
-package org.ahoxha.mx;
+package org.ahoxha.matrix;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

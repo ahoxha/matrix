@@ -1,4 +1,4 @@
-package org.ahoxha.mx;
+package org.ahoxha.matrix;
 
 import java.awt.*;
 import javax.swing.*;
