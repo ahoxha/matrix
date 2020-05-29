@@ -9,3 +9,4 @@ matrix.ipr
 matrix.iws
 out/
 *.iml
+.java-version
