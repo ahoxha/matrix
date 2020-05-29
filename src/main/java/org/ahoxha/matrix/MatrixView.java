@@ -1,13 +1,18 @@
 package org.ahoxha.matrix;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
+
 import javax.swing.*;
-import java.util.*;
 
-public class MatrixView {
+public final class MatrixView {
 
-	public int[] parse(String s) throws NumberFormatException {
-		Vector<String> vec = new Vector<String>();
+	private MatrixView() {}
+
+	public static int[] parse(String s) {
+		List<String> vec = new ArrayList<>();
 		StringTokenizer t = new StringTokenizer(s, ",-");
 		int i = 0;
 		while (t.hasMoreTokens()) {
@@ -17,12 +22,12 @@ public class MatrixView {
 
 		int[] rez = new int[i];
 		for (int j = 0; j < rez.length; j++) {
-			rez[j] = Integer.parseInt(vec.elementAt(j).toString());
+			rez[j] = Integer.parseInt(vec.get(j));
 		}
 		return rez;
 	}
 
-	public JTable getMultTable(int[][] m) {
+	public static JTable createTable(int[][] m) {
 		JTable tab = new JTable(m.length, m[0].length);
 		tab.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		tab.setForeground(Color.blue);
@@ -34,13 +39,9 @@ public class MatrixView {
 			for (int j = 0; j < m.length; j++) {
 				if (m[j][i] != 0 || j == i) {
 					tab.setValueAt(m[j][i], j, i);
-
 				}
 			}
-
 		}
-
 		return tab;
 	}
-
 }
