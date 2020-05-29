@@ -14,32 +14,28 @@ public class MatrixFrame extends JFrame implements ActionListener {
 	private Container cp = this.getContentPane();
 	private JPanel matrices = new JPanel(new GridLayout(2, 1));
 	private JTextArea result = new JTextArea("", 4, 30);
-	private String text = " In order to have the minimum number of multiplications,\n"
-			+ " matrices have to be parenthesized as follows : \n ";
+	private String text = " To ensure the minimum number of multiplications,\n"
+			+ " matrices have to be multiplied in this order : \n ";
 	private String message = "Invalid input argument.";
-	private String help = "     We are given three matrices: A1 having 10 rows and 3 columns,\n"
-			+ "A2 having 3 rows and 5 columns and A3 having 5 rows and 6 columns.\n"
-			+ "Now we want to find the product of A1*A2*A3, as we can see the \n"
-			+ "multiplication criterion is fulfilled. Whether we multiply these \n"
-			+ "matrices in (A1*A2)*A3 or A1*(A2*A3) we perform different number \n"
-			+ "of multiplications. To find out which way we must arrange (parenthesize) \n"
-			+ "matrices to have minimum number of multiplications, in the text field \n"
-			+ "we type the array of dimensions of matrices, in our case the array is: \n"
-			+ "10,3,5,6 or 10-3-5-6 and press the 'Calculate' button.";
+	private String help = "We are given three matrices: A1 having 10 rows and 3 columns,\n"
+					+ "A2 having 3 rows and 5 columns and A3 having 5 rows and 6\ncolumns.\n"
+					+ "To find out in what order we must multiply them so that we minimize\n"
+					+ "the cost, we type the array of dimensions of matrices in the text \n"
+					+ "filed, and press the 'Calculate' button.\n"
+					+ "In our case the array is: 10,3,5,6 or 10-3-5-6";
 	private JLabel copyRight = new JLabel("Author: Armend Hoxha. Created on: 15.1.2006.");
 
 	private JButton helpBtn = new JButton("Help");
-	private JTextArea helpTextArea = new JTextArea(help, 10, 10);
+	private JTextArea helpTextArea = new JTextArea(help, 7, 10);
 
 	public MatrixFrame() {
-
 		cp.setBackground(Color.white);
-
 		cp.setLayout(new BorderLayout());
+
 		helpTextArea.setEditable(false);
-		helpTextArea.setWrapStyleWord(true);
 		helpTextArea.setForeground(Color.blue);
 		helpTextArea.setFont(new Font("Arial", Color.HSBtoRGB(169, 255, 132), 20));
+
 		JPanel pad = new JPanel();
 		pad.setBackground(new Color(0xfdf5e6));
 		pad.add(matrixArray);
@@ -48,7 +44,6 @@ public class MatrixFrame extends JFrame implements ActionListener {
 		cp.add(pad, BorderLayout.NORTH);
 
 		matrices.setBackground(Color.white);
-
 		cp.add(matrices, BorderLayout.CENTER);
 
 		result.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -60,6 +55,7 @@ public class MatrixFrame extends JFrame implements ActionListener {
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds((screenSize.width - 600) / 2, (screenSize.height - 600) / 2, 600, 600);
 		helpBtn.addActionListener(this);
+
 		this.setTitle("Matrix Chain Order");
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,8 +69,10 @@ public class MatrixFrame extends JFrame implements ActionListener {
 			Object[] h = new Object[2];
 			h[0] = helpTextArea;
 			h[1] = copyRight;
-			JOptionPane.showOptionDialog(this, h, "Help", JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE, null,
-					ob, ob[0]);
+			JOptionPane.showOptionDialog(
+					this, h, "Help",
+					JOptionPane.YES_OPTION, JOptionPane.INFORMATION_MESSAGE,
+					null, ob, ob[0]);
 		} else {
 			int[] p;
 			try {
@@ -106,7 +104,6 @@ public class MatrixFrame extends JFrame implements ActionListener {
 			} catch (Exception ex) {
 				result.setForeground(Color.red);
 				result.setText(message);
-
 			}
 		}
 	}
