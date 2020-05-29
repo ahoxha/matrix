@@ -1,7 +1,7 @@
 package org.ahoxha.matrix;
 
 public class MatrixChainOrder {
-    public static Object[] optimalCost(int[] dimensions) {
+    public static Object[] findOptimalCost(int[] dimensions) {
         Object[] result = new Object[2];
         if (dimensions.length < 1) {
             return result;

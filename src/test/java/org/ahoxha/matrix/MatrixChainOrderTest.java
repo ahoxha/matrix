@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 class MatrixChainOrderTest {
     @Test
     void when_one_matrix_then_multiplications_and_indices_matrices_must_have_one_element_equal_to_zero() {
-        Object[] output = MatrixChainOrder.optimalCost(new int[] { 34, 32 });
+        Object[] output = MatrixChainOrder.findOptimalCost(new int[] { 34, 32 });
 
         int[][] multiplications = (int[][]) output[0];
         int[][] indices = (int[][]) output[1];
@@ -24,7 +24,7 @@ class MatrixChainOrderTest {
 
     @Test
     void when_no_matrix_then_expect_null_matrices() {
-        Object[] output = MatrixChainOrder.optimalCost(new int[] {});
+        Object[] output = MatrixChainOrder.findOptimalCost(new int[] {});
 
         assertEquals(2, output.length);
         assertNull(output[0]);
