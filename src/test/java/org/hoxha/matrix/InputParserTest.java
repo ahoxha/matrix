@@ -1,6 +1,6 @@
-package org.ahoxha.matrix;
+package org.hoxha.matrix;
 
-import static org.ahoxha.matrix.InputParser.parse;
+import static org.hoxha.matrix.InputParser.parse;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;

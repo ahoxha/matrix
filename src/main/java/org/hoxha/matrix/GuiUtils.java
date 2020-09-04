@@ -1,4 +1,4 @@
-package org.ahoxha.matrix;
+package org.hoxha.matrix;
 
 import static javax.swing.JOptionPane.DEFAULT_OPTION;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;

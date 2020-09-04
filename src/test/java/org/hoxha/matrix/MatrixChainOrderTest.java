@@ -1,19 +1,22 @@
-package org.ahoxha.matrix;
+package org.hoxha.matrix;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import org.hoxha.matrix.domain.Result;
 import org.junit.jupiter.api.Test;
 
 class MatrixChainOrderTest {
     @Test
     void when_one_matrix_then_multiplications_and_indices_matrices_must_have_one_element_equal_to_zero() {
-        Object[] output = MatrixChainOrder.findOptimalCost(new int[] { 34, 32 });
+        Result output = MatrixChainOrder.findOptimalCost(new int[] { 34, 32 });
 
-        int[][] multiplications = (int[][]) output[0];
-        int[][] indices = (int[][]) output[1];
+        int[][] multiplications = output.getMultiplicationsMatrix();
+        int[][] indices = output.getIndicesMatrix();
 
-        assertEquals(2, output.length);
+        assertNotNull(multiplications);
+        assertNotNull(indices);
         assertEquals(1, multiplications.length);
         assertEquals(1, multiplications[0].length);
         assertEquals(1, indices.length);
@@ -24,10 +27,9 @@ class MatrixChainOrderTest {
 
     @Test
     void when_no_matrix_then_expect_null_matrices() {
-        Object[] output = MatrixChainOrder.findOptimalCost(new int[] {});
+        Result output = MatrixChainOrder.findOptimalCost(new int[] {});
 
-        assertEquals(2, output.length);
-        assertNull(output[0]);
-        assertNull(output[1]);
+        assertNull(output.getMultiplicationsMatrix());
+        assertNull(output.getIndicesMatrix());
     }
 }

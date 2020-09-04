@@ -1,4 +1,4 @@
-package org.ahoxha.matrix;
+package org.hoxha.matrix;
 
 import java.util.ArrayList;
 import java.util.List;

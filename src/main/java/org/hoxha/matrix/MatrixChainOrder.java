@@ -1,8 +1,13 @@
-package org.ahoxha.matrix;
+package org.hoxha.matrix;
 
-public class MatrixChainOrder {
-    public static Object[] findOptimalCost(int[] dimensions) {
-        Object[] result = new Object[2];
+import org.hoxha.matrix.domain.Result;
+
+public final class MatrixChainOrder {
+
+    private MatrixChainOrder() { }
+
+    public static Result findOptimalCost(int[] dimensions) {
+        Result result = new Result();
         if (dimensions.length < 1) {
             return result;
         }
@@ -26,8 +31,8 @@ public class MatrixChainOrder {
             }
         }
 
-        result[0] = multiplications;
-        result[1] = indices;
+        result.setMultiplicationsMatrix(multiplications);
+        result.setIndicesMatrix(indices);
         return result;
     }
 

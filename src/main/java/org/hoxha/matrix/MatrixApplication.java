@@ -1,4 +1,4 @@
-package org.ahoxha.matrix;
+package org.hoxha.matrix;
 
 public class MatrixApplication {
     public static void main(String[] args) {
