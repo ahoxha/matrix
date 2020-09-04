@@ -1,6 +1,6 @@
 package org.hoxha.matrix;
 
-import static org.hoxha.matrix.GuiUtils.createTable;
+import static org.hoxha.matrix.GuiUtils.renderTable;
 import static org.hoxha.matrix.GuiUtils.showHelpDialog;
 
 import java.awt.*;
@@ -77,41 +77,34 @@ public class MatrixFrame extends JFrame {
     }
 
     private void calculateAndRenderResults() {
-        matricesPanel.removeAll();
-        renderResults();
-        matricesPanel.updateUI();
+		try {
+			wipeOutResults();
+
+			int[] inputArray = InputParser.parse(inputField.getText());
+			Result result = MatrixChainOrder.findOptimalCost(inputArray);
+
+			renderMatrixPanel(result.getMultiplicationsMatrix(), "  Matrix of multiplications : ");
+			renderMatrixPanel(result.getIndicesMatrix(), "  Matrix of indices : ");
+
+			String text = " To ensure the minimum number of multiplications,\n" + " matrices have to be multiplied in this order : \n ";
+			resultArea.append(text + MatrixChainOrder.parenthesize(result.getIndicesMatrix(), 0, inputArray.length - 2));
+		} catch (Exception ex) {
+			showErrorMessage();
+		}
+		matricesPanel.updateUI();
     }
 
-    private void renderResults() {
-        try {
-            wipeOutResultAreaAndResetPenColor();
+	private void renderMatrixPanel(int[][] matrix, String title) {
+		JScrollPane scrollPane = new JScrollPane(renderTable(matrix));
+		scrollPane.getViewport().setBackground(Color.white);
+		JPanel panel = new JPanel(new BorderLayout());
+		panel.add(new JLabel(title), BorderLayout.NORTH);
+		panel.add(scrollPane, BorderLayout.CENTER);
+		matricesPanel.add(panel);
+	}
 
-            int[] inputArray = InputParser.parse(inputField.getText());
-            Result result = MatrixChainOrder.findOptimalCost(inputArray);
-
-            int[][] multiplications = result.getMultiplicationsMatrix();
-            int[][] indices = result.getIndicesMatrix();
-            JScrollPane sp1 = new JScrollPane(createTable(multiplications));
-            JScrollPane sp2 = new JScrollPane(createTable(indices));
-            sp1.getViewport().setBackground(Color.white);
-            sp2.getViewport().setBackground(Color.white);
-            JPanel pan1 = new JPanel(new BorderLayout());
-            JPanel pan2 = new JPanel(new BorderLayout());
-            pan1.add(new JLabel("  Matrix of multiplications : "), BorderLayout.NORTH);
-            pan1.add(sp1, BorderLayout.CENTER);
-            pan2.add(new JLabel("  Matrix of indices : "), BorderLayout.NORTH);
-            pan2.add(sp2, BorderLayout.CENTER);
-
-            matricesPanel.add(pan1);
-            matricesPanel.add(pan2);
-            String text = " To ensure the minimum number of multiplications,\n" + " matrices have to be multiplied in this order : \n ";
-            resultArea.append(text + MatrixChainOrder.parenthesize(indices, 0, inputArray.length - 2));
-        } catch (Exception ex) {
-            showErrorMessage();
-        }
-    }
-
-    private void wipeOutResultAreaAndResetPenColor() {
+	private void wipeOutResults() {
+		matricesPanel.removeAll();
         resultArea.setText("");
         resultArea.setForeground(Color.blue);
     }

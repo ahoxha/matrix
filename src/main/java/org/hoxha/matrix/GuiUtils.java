@@ -34,7 +34,7 @@ public final class GuiUtils {
                 null, button, button[0]);
     }
 
-    public static JTable createTable(int[][] m) {
+    public static JTable renderTable(int[][] m) {
         JTable tab = new JTable(m.length, m[0].length);
         tab.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tab.setForeground(Color.blue);
