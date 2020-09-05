@@ -36,4 +36,4 @@ test {
 }
 
 // Define the main class for the application
-mainClassName = 'org.ahoxha.matrix.MatrixApplication'
+mainClassName = 'org.hoxha.matrix.MatrixApplication'
