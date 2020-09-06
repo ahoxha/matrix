@@ -2,6 +2,7 @@ package org.hoxha.matrix;
 
 import static org.hoxha.matrix.InputParser.parse;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -13,7 +14,7 @@ class InputParserTest {
 
     @Test
     void testParseWithComma() {
-        assertArrayEquals(new int[] { 23, 12, 34 }, parse("23,12,34"));
+        assertArrayEquals(new int[] { 23, 12, 34, 56 }, parse("23,12,34,56"));
     }
 
     @Test
@@ -23,7 +24,32 @@ class InputParserTest {
 
     @Test
     void testParseWithOneElement() {
-        assertArrayEquals(new int[] { 10 }, parse("10"));
+        try {
+            parse("10");
+            fail(FAIL_MESSAGE);
+        } catch (IllegalArgumentException e) {
+            assertEquals("You need to provide at least 4 elements.", e.getMessage());
+        }
+    }
+
+    @Test
+    void testParseWithTwoElements() {
+        try {
+            parse("10,12");
+            fail(FAIL_MESSAGE);
+        } catch (IllegalArgumentException e) {
+            assertEquals("You need to provide at least 4 elements.", e.getMessage());
+        }
+    }
+
+    @Test
+    void testParseWithThreeElements() {
+        try {
+            parse("10,12,13");
+            fail(FAIL_MESSAGE);
+        } catch (IllegalArgumentException e) {
+            assertEquals("You need to provide at least 4 elements.", e.getMessage());
+        }
     }
 
     @Test
@@ -43,7 +69,7 @@ class InputParserTest {
 
     @Test
     void testParseWithConsecutiveDelimiters() {
-        assertArrayEquals(new int[] { 1, 2, 3 }, parse("1,-2,,3"));
+        assertArrayEquals(new int[] { 1, 2, 3, 4 }, parse("1,-2,,3--4"));
     }
 
     @Test
@@ -53,7 +79,7 @@ class InputParserTest {
 
     @Test
     void testParseWithSpacesBetweenNumbers() {
-        assertArrayEquals(new int[] { 1, 23, 4 }, parse("1  , 2   3, 4   "));
+        assertArrayEquals(new int[] { 1, 23, 4,7 }, parse("1  , 2   3, 4   -7"));
     }
 
     @Test
