@@ -4,13 +4,13 @@ import org.hoxha.matrix.domain.Result;
 
 public final class MatrixChainOrder {
 
+    private static final int MINIMUM_REQUIRED_ELEMENTS = 4;
+
     private MatrixChainOrder() {
     }
 
     public static Result findOptimalCost(int[] dimensions) {
-        if (dimensions.length < 4) {
-            throw new IllegalArgumentException("You should provide an array of at least 4 elements that specify the dimensions of multipliable matrices.");
-        }
+        ensureValidInput(dimensions);
 
         Result result = new Result();
         double infinity = 1.0 / 0;
@@ -46,5 +46,11 @@ public final class MatrixChainOrder {
             res += "(" + parenthesize(s, i, k - 1) + "*" + parenthesize(s, k, j) + ")";
         }
         return res;
+    }
+
+    private static void ensureValidInput(int[] dimensions) {
+        if (dimensions == null || dimensions.length < MINIMUM_REQUIRED_ELEMENTS) {
+            throw new IllegalArgumentException("You should provide an array of at least 4 elements that specify the dimensions of multipliable matrices.");
+        }
     }
 }

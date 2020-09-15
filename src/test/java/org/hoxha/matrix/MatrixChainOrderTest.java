@@ -13,6 +13,7 @@ class MatrixChainOrderTest {
     @DisplayName("Tests with wrong input")
     class WrongInputTests {
         private static final String ILLEGAL_ARGUMENT_ERROR_MESSAGE = "You should provide an array of at least 4 elements that specify the dimensions of multipliable matrices.";
+        private static final String FAIL_TEST_MESSAGE = "It should have thrown an IllegalArgumentException";
 
         @Test
         void when_no_matrix_then_throw_exception() {
@@ -34,10 +35,20 @@ class MatrixChainOrderTest {
             testWithInvalidInput(12, 23, 45);
         }
 
+        @Test
+        void when_null_array_is_provided_then_throw_exception() {
+            try {
+                MatrixChainOrder.findOptimalCost(null);
+                fail(FAIL_TEST_MESSAGE);
+            } catch (IllegalArgumentException e) {
+                assertEquals(ILLEGAL_ARGUMENT_ERROR_MESSAGE, e.getMessage());
+            }
+        }
+
         private void testWithInvalidInput(int... dimensions) {
             try {
                 MatrixChainOrder.findOptimalCost(dimensions);
-                fail("It should have thrown an IllegalArgumentException");
+                fail(FAIL_TEST_MESSAGE);
             } catch (IllegalArgumentException e) {
                 assertEquals(ILLEGAL_ARGUMENT_ERROR_MESSAGE, e.getMessage());
             }
