@@ -4,14 +4,15 @@ import org.hoxha.matrix.domain.Result;
 
 public final class MatrixChainOrder {
 
-    private MatrixChainOrder() { }
+    private MatrixChainOrder() {
+    }
 
     public static Result findOptimalCost(int[] dimensions) {
-        Result result = new Result();
         if (dimensions.length < 4) {
-            return result;
+            throw new IllegalArgumentException("You should provide an array of at least 4 elements that specify the dimensions of multipliable matrices.");
         }
 
+        Result result = new Result();
         double infinity = 1.0 / 0;
         int n = dimensions.length - 1;
         int[][] multiplications = new int[n][n];
