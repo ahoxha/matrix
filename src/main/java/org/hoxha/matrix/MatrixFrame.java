@@ -1,7 +1,7 @@
 package org.hoxha.matrix;
 
 import static org.hoxha.matrix.GuiUtils.renderTable;
-import static org.hoxha.matrix.GuiUtils.showHelpDialog;
+import static org.hoxha.matrix.GuiUtils.displayHelpDialog;
 
 import java.awt.*;
 
@@ -72,7 +72,7 @@ public class MatrixFrame extends JFrame {
     private void addHelpButton(JPanel pad) {
         JButton helpButton = new JButton("Help");
         pad.add(helpButton);
-        helpButton.addActionListener(a -> showHelpDialog(this));
+        helpButton.addActionListener(a -> displayHelpDialog(this));
     }
 
     private void calculate() {

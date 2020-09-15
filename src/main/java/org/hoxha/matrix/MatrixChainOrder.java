@@ -8,7 +8,7 @@ public final class MatrixChainOrder {
 
     public static Result findOptimalCost(int[] dimensions) {
         Result result = new Result();
-        if (dimensions.length < 1) {
+        if (dimensions.length < 4) {
             return result;
         }
 
