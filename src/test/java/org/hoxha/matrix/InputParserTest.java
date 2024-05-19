@@ -79,7 +79,7 @@ class InputParserTest {
 
     @Test
     void testParseWithSpacesBetweenNumbers() {
-        assertArrayEquals(new int[] { 1, 23, 4,7 }, parse("1  , 2   3, 4   -7"));
+        assertArrayEquals(new int[] { 1, 23, 4, 7 }, parse("1  , 2   3, 4   -7"));
     }
 
     @Test

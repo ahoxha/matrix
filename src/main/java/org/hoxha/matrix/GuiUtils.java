@@ -10,14 +10,12 @@ import javax.swing.*;
 public final class GuiUtils {
 
     private static final String HELP_TEXT =
-            "We are given three matrices: A1 having 10 rows and 3 columns,\n" +
-            "A2 having 3 rows and 5 columns and A3 having 5 rows and 6\ncolumns.\n"
-            + "To find out in what order we must multiply them so that we minimize\n" +
-            "the cost, we type the array of dimensions of matrices in the text \n"
-            + "filed, and press the 'Calculate' button.\n" +
-            "In our case the array is: 10,3,5,6 or 10-3-5-6";
+            "We are given three matrices: A1 having 10 rows and 3 columns,\n" + "A2 having 3 rows and 5 columns and A3 having 5 rows and 6\ncolumns.\n"
+                    + "To find out in what order we must multiply them so that we minimize\n" + "the cost, we type the array of dimensions of matrices in the text \n"
+                    + "filed, and press the 'Calculate' button.\n" + "In our case the array is: 10,3,5,6 or 10-3-5-6";
 
-    private GuiUtils() {}
+    private GuiUtils() {
+    }
 
     public static void displayHelpDialog(JFrame parent) {
         JTextArea helpTextArea = new JTextArea(HELP_TEXT, 7, 10);
